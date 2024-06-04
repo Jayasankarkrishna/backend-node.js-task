@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -10,13 +11,14 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-// mongodb://localhost:27017/invoiceDB
 
-// 
-
+app.get('/', (req, res) => {
+  res.send("product is running")
+})
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://jaysanker918:Saijay123@cluster1.edpb80l.mongodb.net/invoiceDB', {
+const dbURI = process.env.DB_HOST;
+mongoose.connect(dbURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
