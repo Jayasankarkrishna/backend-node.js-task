@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header img {
+            width: 100px;
+        }
+        .title {
+            font-size: 25px;
+        }
+        .subtitle {
+            font-size: 10px;
+            margin-top: 5px;
+        }
+        .date {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .table th, .table td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        .table th {
+            background-color: #f2f2f2;
+        }
+        .totals {
+            margin-top: 20px;
+        }
+        .totals div {
+            margin-top: 10px;
+        }
+        .grand-total {
+            color: blue;
+            font-size: 16px;
+            margin-top: 20px;
+            text-align: right;
+        }
+        .footer {
+            margin-top: 60px;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <div class="title">INVOICE GENERATOR</div>
+            <div class="subtitle">Sample Output should be this</div>
+            <div class="date">Date: {{date}}</div>
+        </div>
+        <img src="data:image/png;base64,{{logo}}" alt="Logo">
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Rate</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{quantity}}</td>
+                <td>{{rate}}</td>
+                <td>INR {{total}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <div class="totals">
+        <div>Total: INR {{totalAmount}}</div>
+        <div>GST: 18%</div>
+    </div>
+    <div class="grand-total">Grand Total: INR {{grandTotal}}</div>
+    <div class="footer">
+        <div>Terms and Conditions</div>
+        <div>we are happy to supply any further information you may need and trust that you call on us to fill your order, which will receive our prompt and careful attention</div>
+    </div>
+    <div class="date">Valid until: 12/04/23</div>
+</body>
+</html>
